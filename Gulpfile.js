@@ -64,26 +64,15 @@ gulp.task('saucelabs', ['lint', 'build'], function (done) {
             browserName: 'firefox'
         },
         {
-            platform:    'Windows 10',
-            browserName: 'internet explorer',
-            version:     '11.0'
-        },
-        {
-            platform:    'OS X 10.12',
+            platform:    'macOS 13',
             browserName: 'safari',
-            version:     '11.0'
-        },
-        {
-            platform:    'Linux',
-            browserName: 'android',
-            version:     '5.1',
-            deviceName:  'Android Emulator'
+            version:     '16'
         },
         {
             platform:    'iOS',
             browserName: 'Safari',
-            version:     '10.3',
-            deviceName:  'iPhone 7 Plus Simulator'
+            version:     '15.2',
+            deviceName:  'iPhone Simulator'
         }
     ];
 

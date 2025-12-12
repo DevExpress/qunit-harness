@@ -2,22 +2,22 @@
   "name": "qunit-harness",
   "version": "1.4.0",
   "description": "A library for running qunit tests on a local machine and in the SauceLabs environment.",
-  "homepage": "https://github.com/AlexanderMoskovkin/qunit-harness",
-  "bugs": "https://github.com/AlexanderMoskovkin/qunit-harness/issues",
+  "homepage": "https://github.com/DevExpress/qunit-harness",
+  "bugs": "https://github.com/DevExpress/qunit-harness/issues",
   "license": "MIT",
   "author": {
-    "name": "Alexander Moskovkin",
-    "site": "https://github.com/AlexanderMoskovkin"
+    "name": "Developer Express Inc.",
+    "site": "https://github.com/DevExpress"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/AlexanderMoskovkin/qunit-harness.git"
+    "url": "https://github.com/DevExpress/qunit-harness"
   },
   "engines": {
     "node": ">= 0.10"
   },
   "dependencies": {
-    "@belym.a.2105/sauce-tunnel": "3.0.0",
+    "@devexpress/sauce-tunnel": "^3.1.0",
     "babel-runtime": "^5.8.20",
     "body-parser": "^1.13.3",
     "chalk": "^1.1.0",
@@ -39,10 +39,13 @@
     "gulp-babel": "^5.2.0",
     "gulp-eslint": "^1.0.0",
     "gulp-webmake": "0.0.4",
-    "merge-stream": "^0.1.8"
+    "merge-stream": "^0.1.8",
+    "@testcafe/publish-please": "^5.6.0"
   },
   "scripts": {
-    "test": "gulp saucelabs && gulp cli"
+    "test": "gulp saucelabs && gulp cli",
+    "publish-please": "publish-please",
+    "prepublish": "publish-please guard"
   },
   "main": "./lib/index",
   "overrides": {
