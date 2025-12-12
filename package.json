@@ -14,7 +14,7 @@
     "url": "https://github.com/DevExpress/qunit-harness"
   },
   "engines": {
-    "node": ">= 0.10"
+    "node": ">= 18.0.0"
   },
   "dependencies": {
     "@devexpress/sauce-tunnel": "^3.1.0",
