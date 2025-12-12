@@ -47,6 +47,7 @@
   },
   "scripts": {
     "test": "gulp saucelabs && gulp cli",
+    "test-publish": "gulp saucelabs",
     "publish-please": "publish-please",
     "prepublish": "publish-please guard"
   },
