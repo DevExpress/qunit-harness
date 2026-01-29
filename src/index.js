@@ -10,7 +10,6 @@ import readDir from './utils/read-dir';
 import getTests from './utils/get-tests';
 import pathToUrl from './utils/path-to-url';
 import { EventEmitter } from 'events';
-import ip from 'ip';
 
 import * as saucelabs from './saucelabs/saucelabs';
 import * as cli from './cli';
@@ -65,6 +64,18 @@ async function getFile (res, filePath) {
     res.send(await fs.readfile(filePath));
 }
 
+function getLocalIPAddress () {
+    const interfaces = os.networkInterfaces();
+
+    for (const name of Object.keys(interfaces)) {
+        for (const iface of interfaces[name]) {
+            if (iface.family === 'IPv4' && !iface.internal) 
+                return iface.address;
+        }
+    }
+    return 'localhost';
+}
+
 //QUnitServer
 export default class QUnitServer extends EventEmitter {
     constructor () {
@@ -117,7 +128,7 @@ export default class QUnitServer extends EventEmitter {
     _createServers () {
         this.localhostname = 'http://localhost:' + this.serverPort;
 
-        var hostname = `http://${ip.address()}:`;
+        var hostname = `http://${getLocalIPAddress()}:`;
 
         this.hostname            = hostname + this.serverPort;
         this.crossDomainHostname = hostname + this.crossDomainServerPort;
@@ -428,7 +439,7 @@ export default class QUnitServer extends EventEmitter {
 
         this._createServers();
         this._setupRoutes();
-
+        
         console.log('QUnit server listens on', this.localhostname);
 
         if (typeof this.beforeCallback === 'function')
